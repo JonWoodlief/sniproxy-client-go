@@ -8,14 +8,15 @@ import (
 	"net/http"
 )
 
+const proxyAddr = "localhost:18443"
+
 func main() {
 	// Create a new HTTP client with the proxy
 	client := &http.Client{
 		Transport: &http.Transport{
 			DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
-				addr = "localhost:18443" // Convert proxyURL to string
 				dialer := net.Dialer{}
-				return dialer.DialContext(ctx, network, addr)
+				return dialer.DialContext(ctx, network, proxyAddr)
 			},
 		},
 	}
