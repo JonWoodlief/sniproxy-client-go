@@ -6,22 +6,14 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
-	"net/url"
 )
 
 func main() {
-	// Set the proxy URL
-	proxyURL, err := url.Parse("localhost:18443")
-	if err != nil {
-		fmt.Println("Error parsing proxy URL:", err)
-		return
-	}
-
 	// Create a new HTTP client with the proxy
 	client := &http.Client{
 		Transport: &http.Transport{
 			DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
-				addr = proxyURL.String() // Convert proxyURL to string
+				addr = "localhost:18443" // Convert proxyURL to string
 				dialer := net.Dialer{}
 				return dialer.DialContext(ctx, network, addr)
 			},
