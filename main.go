@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"crypto/tls"
 	"fmt"
 	"io/ioutil"
 	"net"
@@ -21,9 +20,6 @@ func main() {
 	// Create a new HTTP client with the proxy
 	client := &http.Client{
 		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				ServerName: "globalcatalog.test.cloud.ibm.com",
-			},
 			DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
 				addr = proxyURL.String() // Convert proxyURL to string
 				dialer := net.Dialer{}
