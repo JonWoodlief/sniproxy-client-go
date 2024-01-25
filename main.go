@@ -21,7 +21,6 @@ func main() {
 	// Create a new HTTP client with the proxy
 	client := &http.Client{
 		Transport: &http.Transport{
-			//			Proxy: http.ProxyURL(proxyURL),
 			TLSClientConfig: &tls.Config{
 				ServerName: "globalcatalog.test.cloud.ibm.com",
 			},
@@ -34,7 +33,7 @@ func main() {
 	}
 
 	// Create a new request
-	req, err := http.NewRequest("GET", "https://globalcatalog.test.cloud.ibm.com:18443/healthcheck", nil)
+	req, err := http.NewRequest("GET", "https://globalcatalog.test.cloud.ibm.com/healthcheck", nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
 		return
