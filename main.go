@@ -22,7 +22,7 @@ func main() {
 	}
 
 	// Create a new request
-	req, err := http.NewRequest("GET", "https://globalcatalog.test.cloud.ibm.com/healthcheck", nil)
+	req, err := http.NewRequest("GET", "https://ibm.com/healthcheck", nil)
 	if err != nil {
 		fmt.Println("Error creating request:", err)
 		return
